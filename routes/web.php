@@ -18,21 +18,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Student;
 
 /**
     * Show Task Dashboard
     */
 Route::get('/', function () {
-    Log::info("Get /");
-    $startTime = microtime(true);
-    // Simple cache-aside logic
-    if (Cache::has('tasks')) {
-        $data = Cache::get('tasks');
-    } else {
-        $data = Task::orderBy('created_at', 'asc')->get();
-        Cache::add('tasks', $data);
-    }
-    return view('tasks', ['tasks' => $data, 'elapsed' => microtime(true) - $startTime]);
+    $students = Student::all();
+    return view('students', compact('students'));
 });
 
 /**
