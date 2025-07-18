@@ -34,7 +34,7 @@
                     <td>{{ $student->first_name }}</td>
                     <td>{{ $student->course }}</td>
                     <td>{{ $student->student_id }}</td>
-                    <td style="white-space: pre-line;">{!! nl2br(e($student->details)) !!}</td>
+                    <td>{!! nl2br(e($student->details)) !!}</td>
                 </tr>
                 @endforeach
             </tbody>
