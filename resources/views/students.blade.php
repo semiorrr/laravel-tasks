@@ -24,7 +24,7 @@
                 @foreach($students as $student)
                 <tr>
                     <td class="text-center">
-                        <img src="{{ $student->photo }}"
+                        <img src="{{ asset($student->photo) }}"
                              alt="Photo"
                              class="rounded-circle border border-secondary shadow-sm"
                              width="60" height="60"
@@ -34,7 +34,7 @@
                     <td>{{ $student->first_name }}</td>
                     <td>{{ $student->course }}</td>
                     <td>{{ $student->student_id }}</td>
-                    <td style="white-space: pre-line;">{{ $student->details }}</td>
+                    <td style="white-space: pre-line;">{!! nl2br(e($student->details)) !!}</td>
                 </tr>
                 @endforeach
             </tbody>

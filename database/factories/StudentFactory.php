@@ -31,14 +31,9 @@ class StudentFactory extends Factory
             'https://randomuser.me/api/portraits/women/4.jpg',
             'https://randomuser.me/api/portraits/women/5.jpg',
         ];
-        static $photoIndex = 0;
-        static $shuffledPhotos = null;
-        if ($shuffledPhotos === null) {
-            $shuffledPhotos = $photoUrls;
-            shuffle($shuffledPhotos);
-        }
-        $photo = $shuffledPhotos[$photoIndex % count($shuffledPhotos)];
-        $photoIndex++;
+        static $photoIndex = 1;
+        $photo = 's' . $photoIndex . '.jpg';
+        $photoIndex = $photoIndex < 20 ? $photoIndex + 1 : 1;
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
