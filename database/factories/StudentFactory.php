@@ -31,10 +31,18 @@ class StudentFactory extends Factory
             'https://randomuser.me/api/portraits/women/4.jpg',
             'https://randomuser.me/api/portraits/women/5.jpg',
         ];
+        static $photoIndex = 0;
+        static $shuffledPhotos = null;
+        if ($shuffledPhotos === null) {
+            $shuffledPhotos = $photoUrls;
+            shuffle($shuffledPhotos);
+        }
+        $photo = $shuffledPhotos[$photoIndex % count($shuffledPhotos)];
+        $photoIndex++;
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'photo' => $this->faker->randomElement($photoUrls),
+            'photo' => $photo,
             'course' => $this->faker->randomElement($courses),
             'student_id' => strtoupper($this->faker->bothify('S####')),
             'details' => 'Year: ' . $this->faker->numberBetween(1, 4) . '\nBdate: ' . $this->faker->date('Y-m-d') . '\nHobbies: ' . $this->faker->randomElement($hobbies) . '\nSkills: ' . $this->faker->randomElement($skills),
