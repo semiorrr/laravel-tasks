@@ -19,10 +19,22 @@ class StudentFactory extends Factory
         $courses = ['Computer Science', 'Business Administration', 'Engineering', 'Psychology', 'Biology', 'Mathematics', 'Education', 'Nursing', 'Economics', 'Architecture'];
         $hobbies = ['Reading', 'Basketball', 'Coding', 'Music', 'Drawing', 'Swimming', 'Gaming', 'Traveling', 'Photography', 'Cooking'];
         $skills = ['Java', 'Python', 'Public Speaking', 'Leadership', 'Teamwork', 'C++', 'Photoshop', 'Excel', 'Writing', 'Research'];
+        $photoUrls = [
+            'https://randomuser.me/api/portraits/men/1.jpg',
+            'https://randomuser.me/api/portraits/men/2.jpg',
+            'https://randomuser.me/api/portraits/men/3.jpg',
+            'https://randomuser.me/api/portraits/men/4.jpg',
+            'https://randomuser.me/api/portraits/men/5.jpg',
+            'https://randomuser.me/api/portraits/women/1.jpg',
+            'https://randomuser.me/api/portraits/women/2.jpg',
+            'https://randomuser.me/api/portraits/women/3.jpg',
+            'https://randomuser.me/api/portraits/women/4.jpg',
+            'https://randomuser.me/api/portraits/women/5.jpg',
+        ];
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'photo' => $this->faker->imageUrl(100, 100, 'people', true, 'student'),
+            'photo' => $this->faker->randomElement($photoUrls),
             'course' => $this->faker->randomElement($courses),
             'student_id' => strtoupper($this->faker->bothify('S####')),
             'details' => 'Year: ' . $this->faker->numberBetween(1, 4) . '\nBdate: ' . $this->faker->date('Y-m-d') . '\nHobbies: ' . $this->faker->randomElement($hobbies) . '\nSkills: ' . $this->faker->randomElement($skills),
