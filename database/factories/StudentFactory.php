@@ -40,7 +40,7 @@ class StudentFactory extends Factory
             'photo' => $photo,
             'course' => $this->faker->randomElement($courses),
             'student_id' => strtoupper($this->faker->bothify('S####')),
-            'details' => 'Year: ' . $this->faker->numberBetween(1, 4) . '\nBdate: ' . $this->faker->date('Y-m-d') . '\nHobbies: ' . $this->faker->randomElement($hobbies) . '\nSkills: ' . $this->faker->randomElement($skills),
+            'details' => "Year: " . $this->faker->numberBetween(1, 4) . "\nBdate: " . $this->faker->date('Y-m-d') . "\nHobbies: " . $this->faker->randomElement($hobbies) . "\nSkills: " . $this->faker->randomElement($skills),
         ];
     }
 }
