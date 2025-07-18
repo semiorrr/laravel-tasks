@@ -24,7 +24,11 @@
                 @foreach($students as $student)
                 <tr>
                     <td class="text-center">
-                        <img src="{{ $student->photo ?? 'https://via.placeholder.com/60?text=No+Photo' }}" alt="Photo" class="rounded-circle" width="60" height="60">
+                        <img src="{{ $student->photo }}"
+                             alt="Photo"
+                             class="rounded-circle border border-secondary shadow-sm"
+                             width="60" height="60"
+                             onerror="this.onerror=null;this.src='https://via.placeholder.com/60?text=No+Photo';">
                     </td>
                     <td>{{ $student->last_name }}</td>
                     <td>{{ $student->first_name }}</td>
