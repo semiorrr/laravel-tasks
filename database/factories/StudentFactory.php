@@ -34,13 +34,19 @@ class StudentFactory extends Factory
         static $photoIndex = 1;
         $photo = 's' . $photoIndex . '.jpg';
         $photoIndex = $photoIndex < 20 ? $photoIndex + 1 : 1;
+        $details = <<<EOT
+Year: {$this->faker->numberBetween(1, 4)}
+Bdate: {$this->faker->date('Y-m-d')}
+Hobbies: {$this->faker->randomElement($hobbies)}
+Skills: {$this->faker->randomElement($skills)}
+EOT;
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'photo' => $photo,
             'course' => $this->faker->randomElement($courses),
             'student_id' => strtoupper($this->faker->bothify('S####')),
-            'details' => "Year: " . $this->faker->numberBetween(1, 4) . "\nBdate: " . $this->faker->date('Y-m-d') . "\nHobbies: " . $this->faker->randomElement($hobbies) . "\nSkills: " . $this->faker->randomElement($skills),
+            'details' => $details,
         ];
     }
 }
